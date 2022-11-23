@@ -1,50 +1,43 @@
 <nav class="navbar bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">The cocktail DB</a>
+    <button class="btn btn-outline-success" type="submit" [routerLink]="'../home'">Home</button>
   </div>
 </nav>
 
-
 <h1>Search</h1>
-    <div class="input-group">
-      <form>
-        <div class="row mb-3">
-          <label for="drinkName" class="col-sm-4 col-form-label">Drink name</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" 
-            id="drinkName" 
-            name="drinkName" 
-            [(ngModel)]="jsonIn.name"
-                    placeholder="inserire un termine di ricerca">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-4 col-form-label">Ingrediente</label>
-          <div class="col-sm-8">
-            <select class="form-control" [(ngModel)]="jsonIn.ingredient" id="ingredient" name="ingredient">
-              <option></option>
-            </select>
-          </div>
-        </div>
 
 
-      </form>
+<div class="container">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Drink name</span>
+    <input type="text" name="search" [(ngModel)]="drinkName" class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default">
+  </div>
 
-<!-- <div class="row">
-  <div class="col-sm-12 col-md-4 col-lg-3 my-2"
-      *ngFor="let drink of drinks"
-      role="button"
-      [routerLink]="'/drink/' + drink.idDrink">
+  <select class="form-select mb-3" [(ngModel)]="ingredientName">
+    <option *ngFor="let ingredientName of ingredients" [value]="ingredientName.strIngredient1">
+      {{ingredientName.strIngredient1}}
+    </option>
+  </select>
+
+  <button class="btn btn-outline-success" type="submit" (click)="getDrinksByClick()">Search</button>
+</div>
+
+
+<h1>Drinks by search</h1>
+<div class="row">
+  <div class="col-sm-12 col-md-3 col-lg-4 my-2" *ngFor="let drink of drinks">
     <div class="card">
       <img [src]="drink.strDrinkThumb" class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">{{ drink.strDrink}}</h5>
-        
-        <div  class="btn btn-primary">Dettaglio</div>
+
+        <button class="btn btn-primary" [routerLink]="'/drink/' + drink.idDrink">Dettaglio</button>
       </div>
       <div class="card-footer">
         <small class="text-muted">{{ drink.strCategory }}</small>
       </div>
     </div>
   </div>
-</div> -->
+</div>

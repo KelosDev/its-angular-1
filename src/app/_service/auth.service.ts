@@ -6,24 +6,24 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-    constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-    login(jsonIn: any) {
-      return this.httpClient.post('/login', jsonIn)
-                  .pipe(
-                    map( (response:any ) => {
-                      localStorage['token'] = response.token;
-                      return response.currentUser;
-                    }
-                  )
-    }
+  login(jsonIn: any) {
+    return this.httpClient.post('/login', jsonIn)
+      .pipe(
+        map((response: any) => {
+          localStorage['token'] = response.token;
+          return response.currentUser;
+        }
+        ))
+  }
 
-    isLogged(): boolean {
-      return Boolean(localStorage['token']);
-    }
+  isLogged(): boolean {
+    return Boolean(localStorage['token']);
+  }
 
-    logout() {
-      localStorage.clear();
-      // redirect logion
-    }
+  logout() {
+    localStorage.clear();
+    // redirect logion
+  }
 }
