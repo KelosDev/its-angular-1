@@ -1,9 +1,11 @@
+<!-- Navbar con titolo app -->
 <nav class="navbar bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">The cocktail DB</a>
   </div>
 </nav>
 
+<!-- dettaglio drink -->
 <div class="card-group m-3">
   <div class="card text-bg-dark" style="max-width: 540px;">
     <img [src]="drink.strDrinkThumb" class="img-fluid rounded-start">
@@ -28,9 +30,9 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Instructions</h5>
-      
+
       <p class="card-text"> {{ drink.instructions.EN }} </p>
     </div>
   </div>
-  
+
 </div>
