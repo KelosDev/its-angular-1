@@ -9,15 +9,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   jsonIn = {
-    username: 'pippo',
+    username: '',
     password: '',
     rememberMe: false,
   }
   @ViewChild('loginForm') loginForm!: NgForm;
   showErrors = false;
   showPassword = false;
-  
-  constructor(private router: Router) {}
+
+  constructor(private router: Router) { }
 
   signIn() {
     if (this.loginForm.form.invalid) {
